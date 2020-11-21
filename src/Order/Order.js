@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import {
-    DialogContent,
-    DialogFooter,
-    ConfirmButton
+  DialogContent,
+  DialogFooter,
+  ConfirmButton
 } from "../FoodDialog/FoodDialog";
 
 const OrderStyled = styled.div`
@@ -24,17 +24,16 @@ const OrderContent = styled(DialogContent)`
   height: 100%;
 `;
 
-export function Order() {
-    return <OrderStyled>
-        
-            <OrderContent>
-         
-                Unfortunately you do not have orders.
-            
-            </OrderContent>
-            <DialogFooter>
-                <ConfirmButton>Checkout</ConfirmButton>
-            </DialogFooter>
-        
-    </ OrderStyled>
+export function Order({ orders }) {
+  return <OrderStyled>
+    {orders.length === 0 ? (
+      <OrderContent>
+        Unfortunately you do not have orders.
+      </OrderContent>) : (
+        <OrderContent>Found {orders.length} orders</OrderContent>)}
+    <DialogFooter>
+      <ConfirmButton>Checkout</ConfirmButton>
+    </DialogFooter>
+
+  </ OrderStyled>
 }
